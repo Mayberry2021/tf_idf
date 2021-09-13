@@ -18,7 +18,7 @@
 
 1. db_controller.py    
     * DB에 저장된 데이터를 불러오는 모듈입니다. 사용할 수 있는 함수는 아래와 같습니다.
-          A. select_text
+          A. select_article
               -> DB 이름과 섹션을 입력하면 해당 섹션의 기사 본문들을 모두 가지고 옵니다. 추가로 id와 title 옵션을 주어 원하는 id와 title의 기사를 가지고 올 수 있습니다.
           B. select_article_by_keyword
                -> DB 이름과 섹션, 키워드를 입력하면 사용자가 원하는 키워드가 포함된 기사 본문을 가지고 옵니다. 키워드를 입력받은 뒤 Konlpy의 Okt 형태소 분석기를 활용 
