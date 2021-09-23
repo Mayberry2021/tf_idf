@@ -3,7 +3,7 @@ from konlpy.tag import Okt
 
 okt = Okt()
 
-def select_text(db_name, section, id=False, title=False):
+def select_article(db_name, section, id=False, title=False):
 	db = sqlite3.connect(f'{db_name}')
 	curs = db.cursor()
 	if (id):
@@ -19,6 +19,14 @@ def select_text(db_name, section, id=False, title=False):
 		result = curs.execute(sql, [section]).fetchall()
 		return result
 
+def select_title(db_name, section):
+	db = sqlite3.connect(f'{db_name}')
+	curs = db.cursor()
+	sql = f'SELECT title FROM article WHERE section == ?'
+	result = curs.execute(sql, [section]).fetchall()
+	return result
+
+
 def select_article_by_keyword(db_name, section, keyword):
 	db = sqlite3.connect(db_name)
 	curs = db.cursor()
@@ -31,15 +39,3 @@ def select_article_by_keyword(db_name, section, keyword):
 		content = curs.execute(sql, [title]).fetchall()
 		result.append(content[0][0])
 	return result
-
-
-def select_title(db_name, section):
-	db = sqlite3.connect(f'{db_name}')
-	curs = db.cursor()
-	sql = f'SELECT title FROM article WHERE section == ?'
-	result = curs.execute(sql, [section]).fetchall()
-	return result
-
-
-#content = select_article_by_keyword('all_0831_1546.db', 'politics', '아프간')
-#print(content)
